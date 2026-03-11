@@ -1,0 +1,465 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Environmental History View - Light Theme</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#135bec",
+              "background-light": "#f0f2f5",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "1.5rem",
+              xl: "2rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #f0f2f5 !important;
+      }
+      html.dark body {
+        background-color: #101622 !important;
+      }
+      .dark .neumorphic-card {
+        background: #1b2636;
+        box-shadow:
+          12px 12px 24px #0a0f17,
+          -12px -12px 24px #2c3645;
+      }
+      .dark .neumorphic-button {
+        background: #1b2636;
+        box-shadow:
+          6px 6px 12px #0a0f17,
+          -6px -6px 12px #2c3645;
+      }
+      .dark .neumorphic-inset {
+        background: #1b2636;
+        box-shadow:
+          inset 6px 6px 12px #0a0f17,
+          inset -6px -6px 12px #2c3645;
+      }
+      .dark .neumorphic-tab-active {
+        background: #1b2636;
+        box-shadow:
+          inset 4px 4px 8px #0a0f17,
+          inset -4px -4px 8px #2c3645;
+        color: #135bec;
+      }
+      .dark {
+        color-scheme: dark;
+      }
+      .dark .text-slate-900 {
+        color: #e2e8f0;
+      }
+      .dark .text-slate-600 {
+        color: #cbd5e1;
+      }
+      .dark .text-slate-500 {
+        color: #94a3b8;
+      }
+      .dark .text-slate-400 {
+        color: #78909c;
+      }
+      .dark .border-slate-200 {
+        border-color: #334155;
+      }
+    </style>
+    <style type="text/tailwindcss">
+      @layer components {
+        .neumorphic-card {
+          background: #f0f2f5;
+          box-shadow:
+            12px 12px 24px #d1d9e6,
+            -12px -12px 24px #ffffff;
+        }
+        .neumorphic-button {
+          background: #f0f2f5;
+          box-shadow:
+            6px 6px 12px #d1d9e6,
+            -6px -6px 12px #ffffff;
+          transition: all 0.2s ease;
+        }
+        .neumorphic-button:active {
+          box-shadow:
+            inset 4px 4px 8px #d1d9e6,
+            inset -4px -4px 8px #ffffff;
+          transform: scale(0.98);
+        }
+        .neumorphic-inset {
+          background: #f0f2f5;
+          box-shadow:
+            inset 6px 6px 12px #d1d9e6,
+            inset -6px -6px 12px #ffffff;
+        }
+        .neumorphic-tab-active {
+          background: #f0f2f5;
+          box-shadow:
+            inset 4px 4px 8px #d1d9e6,
+            inset -4px -4px 8px #ffffff;
+          color: #135bec;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-display text-slate-900 bg-background-light min-h-screen">
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <div class="px-6 md:px-20 lg:px-40 flex flex-1 justify-center py-10">
+          <div
+            class="layout-content-container flex flex-col max-w-[1200px] flex-1 gap-8"
+          >
+            <header
+              class="flex items-center justify-between whitespace-nowrap p-6 neumorphic-card rounded-xl"
+            >
+              <div class="flex items-center gap-6">
+                <button
+                  class="size-10 neumorphic-button flex items-center justify-center rounded-lg text-slate-600 hover:text-primary transition-colors"
+                >
+                  <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <div class="flex flex-col">
+                  <h2
+                    class="text-slate-900 font-bold text-xl tracking-tight leading-none"
+                  >
+                    Environmental History
+                  </h2>
+                  <p
+                    class="text-slate-400 text-xs font-medium mt-1 uppercase tracking-widest"
+                  >
+                    System Analytics
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-6">
+                <div class="flex neumorphic-inset p-1 rounded-xl">
+                  <button
+                    id="period-today"
+                    class="px-4 py-2 text-sm font-bold neumorphic-tab-active rounded-lg transition-all"
+                    data-period="today"
+                  >
+                    Today
+                  </button>
+                  <button
+                    id="period-week"
+                    class="px-4 py-2 text-sm font-bold text-slate-500 rounded-lg hover:text-slate-700 transition-all"
+                    data-period="week"
+                  >
+                    Week
+                  </button>
+                  <button
+                    id="period-month"
+                    class="px-4 py-2 text-sm font-bold text-slate-500 rounded-lg hover:text-slate-700 transition-all"
+                    data-period="month"
+                  >
+                    Month
+                  </button>
+                </div>
+                <div class="h-10 w-[1px] bg-slate-300 mx-2"></div>
+                <div class="flex gap-2">
+                  <button
+                    class="size-10 neumorphic-button rounded-full flex items-center justify-center text-slate-600"
+                  >
+                    <span class="material-symbols-outlined">light_mode</span>
+                  </button>
+                  <button
+                    class="size-10 neumorphic-button rounded-full flex items-center justify-center text-slate-400"
+                  >
+                    <span class="material-symbols-outlined">dark_mode</span>
+                  </button>
+                </div>
+              </div>
+            </header>
+            <section
+              class="neumorphic-card rounded-2xl p-8 flex flex-col gap-8"
+              id="trends-section"
+            >
+              <div class="flex items-center justify-between">
+                <div class="flex flex-col gap-1">
+                  <h3 class="text-slate-900 font-bold text-lg" id="trends-title">
+                    24-Hour Trends
+                  </h3>
+                  <p class="text-slate-500 text-sm" id="trends-subtitle">
+                    Aggregated data across all environmental sensors
+                  </p>
+                </div>
+                <div class="flex gap-6">
+                  <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-primary"></span>
+                    <span class="text-xs font-bold text-slate-600 uppercase"
+                      >Temp</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-blue-400"></span>
+                    <span class="text-xs font-bold text-slate-600 uppercase"
+                      >Humid</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                    <span class="text-xs font-bold text-slate-600 uppercase"
+                      >Light</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                id="chart-container"
+                class="w-full h-[400px] neumorphic-inset rounded-xl p-8 relative flex items-end"
+              >
+                <svg
+                  id="history-chart-svg"
+                  class="w-full h-full"
+                  preserveAspectRatio="none"
+                  viewBox="0 0 1000 300"
+                >
+                  <!-- Grid lines -->
+                  <line stroke="#d1d9e6" stroke-dasharray="4" stroke-width="1" x1="0" x2="1000" y1="75"  y2="75"></line>
+                  <line stroke="#d1d9e6" stroke-dasharray="4" stroke-width="1" x1="0" x2="1000" y1="150" y2="150"></line>
+                  <line stroke="#d1d9e6" stroke-dasharray="4" stroke-width="1" x1="0" x2="1000" y1="225" y2="225"></line>
+                  <!-- Area fills (behind lines) -->
+                  <path id="hist-temp-area" d="" fill="rgba(19,91,236,0.07)"></path>
+                  <path id="hist-hum-area"  d="" fill="rgba(96,165,250,0.07)"></path>
+                  <path id="hist-lux-area"  d="" fill="rgba(251,191,36,0.07)"></path>
+                  <!-- Lines -->
+                  <path
+                    id="hist-temp-line"
+                    d="M0,200 Q100,180 200,190 T400,150 T600,120 T800,160 T1000,100"
+                    fill="none" stroke="#135bec" stroke-width="3"
+                  ></path>
+                  <path
+                    id="hist-hum-line"
+                    d="M0,150 Q150,160 300,140 T600,180 T900,150 T1000,170"
+                    fill="none" stroke="#60a5fa" stroke-opacity="0.7" stroke-width="3"
+                  ></path>
+                  <path
+                    id="hist-lux-line"
+                    d="M0,280 Q200,270 400,100 T600,50 T800,200 T1000,280"
+                    fill="none" stroke="#fbbf24" stroke-opacity="0.6" stroke-width="3"
+                  ></path>
+                  <!-- Hover guide line (hidden by default) -->
+                  <line
+                    id="chart-hover-line"
+                    x1="0" y1="0" x2="0" y2="300"
+                    stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3"
+                    opacity="0" style="pointer-events:none; transition:opacity 0.12s"
+                  ></line>
+                  <!-- Data-point dots (rendered by JS) -->
+                  <g id="chart-dots" style="pointer-events:none"></g>
+                  <!-- Transparent hit areas – must be last (on top) -->
+                  <g id="chart-hit-areas"></g>
+                </svg>
+                <div
+                  id="chart-x-labels"
+                  class="absolute bottom-4 left-8 right-8 flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest"
+                >
+                  <span>12 AM</span>
+                  <span>4 AM</span>
+                  <span>8 AM</span>
+                  <span>12 PM</span>
+                  <span>4 PM</span>
+                  <span>8 PM</span>
+                  <span>Now</span>
+                </div>
+
+                <!-- Hover tooltip -->
+                <div
+                  id="chart-tooltip"
+                  class="absolute z-20 pointer-events-none hidden"
+                  style="bottom: 60px; transform: translateX(-50%)"
+                >
+                  <div class="neumorphic-card rounded-xl p-3 min-w-[140px] border border-slate-200/50">
+                    <p id="tt-label" class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">—</p>
+                    <div class="flex flex-col gap-1.5">
+                      <div class="flex items-center justify-between gap-4">
+                        <div class="flex items-center gap-1.5">
+                          <span class="w-2 h-2 rounded-full shrink-0" style="background:#135bec"></span>
+                          <span class="text-[11px] text-slate-500">Temp</span>
+                        </div>
+                        <span id="tt-temp" class="text-sm font-bold text-slate-900">--</span>
+                      </div>
+                      <div class="flex items-center justify-between gap-4">
+                        <div class="flex items-center gap-1.5">
+                          <span class="w-2 h-2 rounded-full shrink-0" style="background:#60a5fa"></span>
+                          <span class="text-[11px] text-slate-500">Humid</span>
+                        </div>
+                        <span id="tt-hum" class="text-sm font-bold text-slate-900">--</span>
+                      </div>
+                      <div class="flex items-center justify-between gap-4">
+                        <div class="flex items-center gap-1.5">
+                          <span class="w-2 h-2 rounded-full shrink-0" style="background:#fbbf24"></span>
+                          <span class="text-[11px] text-slate-500">Light</span>
+                        </div>
+                        <span id="tt-lux" class="text-sm font-bold text-slate-900">--</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="neumorphic-card p-6 rounded-xl" id="stats-highest">
+                <div class="flex items-center gap-3 mb-4 text-emerald-500">
+                  <span class="material-symbols-outlined">stat_3</span>
+                  <h4
+                    class="text-slate-400 font-bold uppercase tracking-widest text-xs"
+                  >
+                    Period Highest
+                  </h4>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex justify-between items-end">
+                    <span class="text-slate-500 text-sm">Temperature</span>
+                    <p class="text-slate-900 font-bold text-2xl">
+                      <span id="temp-highest">28.4</span><span class="text-slate-400 text-sm font-normal"
+                        >°C</span
+                      >
+                    </p>
+                  </div>
+                  <div class="flex justify-between items-end">
+                    <span class="text-slate-500 text-sm">Humidity</span>
+                    <p class="text-slate-900 font-bold text-2xl">
+                      <span id="humidity-highest">64.0</span><span class="text-slate-400 text-sm font-normal"
+                        >%</span
+                      >
+                    </p>
+                  </div>
+                  <div class="flex justify-between items-end">
+                    <span class="text-slate-500 text-sm">Light</span>
+                    <p class="text-slate-900 font-bold text-2xl">
+                      <span id="light-highest">890</span><span class="text-slate-400 text-xs font-normal">
+                        LUX</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="neumorphic-card p-6 rounded-xl" id="stats-lowest">
+                <div class="flex items-center gap-3 mb-4 text-red-500">
+                  <span class="material-symbols-outlined">stat_minus_3</span>
+                  <h4
+                    class="text-slate-400 font-bold uppercase tracking-widest text-xs"
+                  >
+                    Period Lowest
+                  </h4>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex justify-between items-end">
+                    <span class="text-slate-500 text-sm">Temperature</span>
+                    <p class="text-slate-900 font-bold text-2xl">
+                      <span id="temp-lowest">19.2</span><span class="text-slate-400 text-sm font-normal"
+                        >°C</span
+                      >
+                    </p>
+                  </div>
+                  <div class="flex justify-between items-end">
+                    <span class="text-slate-500 text-sm">Humidity</span>
+                    <p class="text-slate-900 font-bold text-2xl">
+                      <span id="humidity-lowest">42.5</span><span class="text-slate-400 text-sm font-normal"
+                        >%</span
+                      >
+                    </p>
+                  </div>
+                  <div class="flex justify-between items-end">
+                    <span class="text-slate-500 text-sm">Light</span>
+                    <p class="text-slate-900 font-bold text-2xl">
+                      <span id="light-lowest">0</span><span class="text-slate-400 text-xs font-normal">
+                        LUX</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="neumorphic-card p-6 rounded-xl" id="stats-average">
+                <div class="flex items-center gap-3 mb-4 text-slate-500">
+                  <span class="material-symbols-outlined">equalizer</span>
+                  <h4
+                    class="text-slate-400 font-bold uppercase tracking-widest text-xs"
+                  >
+                    Period Average
+                  </h4>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex justify-between items-end">
+                    <span class="text-slate-500 text-sm">Temperature</span>
+                    <p class="text-slate-900 font-bold text-2xl">
+                      <span id="temp-average">23.1</span><span class="text-slate-400 text-sm font-normal"
+                        >°C</span
+                      >
+                    </p>
+                  </div>
+                  <div class="flex justify-between items-end">
+                    <span class="text-slate-500 text-sm">Humidity</span>
+                    <p class="text-slate-900 font-bold text-2xl">
+                      <span id="humidity-average">53.2</span><span class="text-slate-400 text-sm font-normal"
+                        >%</span
+                      >
+                    </p>
+                  </div>
+                  <div class="flex justify-between items-end">
+                    <span class="text-slate-500 text-sm">Light</span>
+                    <p class="text-slate-900 font-bold text-2xl">
+                      <span id="light-average">345</span><span class="text-slate-400 text-xs font-normal">
+                        LUX</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <footer
+              class="mt-10 py-10 flex flex-col md:flex-row items-center justify-between border-t border-slate-200 gap-6"
+            >
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-slate-400"
+                  >calendar_today</span
+                >
+                <p class="text-slate-500 text-sm">
+                  Period:
+                  <span class="text-slate-900 font-bold" id="period-label">Today</span>
+                </p>
+              </div>
+              <div class="flex gap-4">
+                <button
+                  class="neumorphic-button h-10 px-6 rounded-lg flex items-center justify-center text-xs font-bold text-slate-600 uppercase tracking-widest"
+                >
+                  <span class="material-symbols-outlined text-sm mr-2"
+                    >download</span
+                  >
+                  Export CSV
+                </button>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/static/js/chart.js"></script>
+    <script src="/static/js/history.js"></script>
+  </body>
+</html>

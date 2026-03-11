@@ -1,0 +1,400 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>IoT Smart Home Dashboard - Light Theme</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#135bec",
+              "background-light": "#f0f2f5",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "1.5rem",
+              xl: "2rem",
+              full: "9999px",
+            },
+            boxShadow: {
+              "neumorphic-flat": "8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff",
+              "neumorphic-pressed":
+                "inset 6px 6px 12px #d1d9e6, inset -6px -6px 12px #ffffff",
+              "neumorphic-sm": "4px 4px 8px #d1d9e6, -4px -4px 8px #ffffff",
+            },
+          },
+        },
+      };
+    </script>
+    <link href="/static/css/style.css" rel="stylesheet" />
+  </head>
+  <body
+    class="font-display text-slate-900 bg-background-light dark:bg-background-dark min-h-screen"
+  >
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden"
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <div class="px-6 md:px-20 lg:px-40 flex flex-1 justify-center py-10">
+          <div
+            class="layout-content-container flex flex-col max-w-[1200px] flex-1 gap-10"
+          >
+            <header
+              class="flex items-center justify-between whitespace-nowrap p-6 neumorphic-card rounded-xl"
+            >
+              <div class="flex items-center gap-4 text-primary">
+                <div
+                  id="status-icon-container"
+                  class="size-10 neumorphic-button flex items-center justify-center rounded-lg text-primary transition-colors duration-500"
+                >
+                  <span id="status-icon" class="material-symbols-outlined text-2xl"
+                    >grid_view</span
+                  >
+                </div>
+                <h2 id="status-text" class="text-slate-900 font-bold text-xl tracking-tight transition-colors duration-500">
+                  Smart Home
+                </h2>
+              </div>
+              <div class="flex items-center gap-6">
+                <div class="flex gap-4">
+                  <button
+                    class="size-12 neumorphic-button rounded-full flex items-center justify-center text-slate-600"
+                  >
+                    <span class="material-symbols-outlined">light_mode</span>
+                  </button>
+                  <button
+                    class="size-12 neumorphic-button rounded-full flex items-center justify-center text-slate-400"
+                  >
+                    <span class="material-symbols-outlined">dark_mode</span>
+                  </button>
+                </div>
+                <div class="h-10 w-[1px] bg-slate-300 mx-2"></div>
+                <div
+                  class="neumorphic-button p-1 rounded-full flex items-center gap-3 pr-4"
+                >
+                  <div
+                    class="size-10 rounded-full bg-cover bg-center border-2 border-white"
+                    data-alt="User profile avatar circular image"
+                    style="
+                      background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDby2SnN6CkdUKLgOVbICSJiJYRuiM0OKBK0dF9t7QCjy9lU3zKwALoUiVnwT5n43BzCu7qot9K4_wbkYBBMrRc_uKWofG7d4YbeT9_lJhzyHyxyBALEPD5m5Mks0QDebLRxRBX-k_BNsTZ7aRQl2nVw9rxcY8CF17hgz5m8bXTw_VOrc-wwfthBfUDIXh5GztxQZ23TugpwyDFSzorj06QMhYYwmKFZVNQobzm0GMHs9oryqQsYThZVYZLM8r3vX5eASPml_vWviE8&quot;);
+                    "
+                  ></div>
+                  <span class="text-sm font-bold text-slate-700"
+                    >Automatic</span
+                  >
+                </div>
+              </div>
+            </header>
+            <section>
+              <div class="flex items-center justify-between mb-8 px-2">
+                <h2 class="text-slate-900 text-2xl font-bold tracking-tight">
+                  Quick Controls
+                </h2>
+                <span class="text-slate-500 text-sm font-medium"
+                  >4 Devices Active / No devices Active</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div
+                  class="neumorphic-button p-8 flex flex-col rounded-lg items-center text-center gap-4 group cursor-pointer active:neumorphic-inset"
+                  data-device="fan"
+                >
+                  <div
+                    class="size-16 neumorphic-inset rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform"
+                  >
+                    <span class="material-symbols-outlined text-3xl"
+                      >cyclone</span
+                    >
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <h3 class="text-slate-900 text-lg font-bold">Living Fan</h3>
+                    <p class="text-slate-500 text-sm font-semibold">
+                      On • Low Speed
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="neumorphic-button p-8 flex flex-col rounded-lg items-center text-center gap-4 group cursor-pointer active:neumorphic-inset"
+                  data-device="door"
+                >
+                  <div
+                    class="size-16 neumorphic-inset rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform"
+                  >
+                    <span class="material-symbols-outlined text-3xl"
+                      >sensor_door</span
+                    >
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <h3 class="text-slate-900 text-lg font-bold">
+                      Main Entrance
+                    </h3>
+                    <p class="text-slate-500 text-sm font-medium">
+                      Securely Locked
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="neumorphic-button p-8 flex flex-col rounded-lg items-center text-center gap-4 group cursor-pointer active:neumorphic-inset"
+                  data-device="window"
+                >
+                  <div
+                    class="size-16 neumorphic-inset rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform"
+                  >
+                    <span class="material-symbols-outlined text-3xl"
+                      >window</span
+                    >
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <h3 class="text-slate-900 text-lg font-bold">
+                      Patio Windows
+                    </h3>
+                    <p class="text-slate-500 text-sm font-medium">
+                      Fully Closed
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="neumorphic-button p-8 flex flex-col rounded-lg items-center text-center gap-4 group cursor-pointer active:neumorphic-inset"
+                  data-device="light"
+                >
+                  <div
+                    class="size-16 neumorphic-inset rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform"
+                  >
+                    <span class="material-symbols-outlined text-3xl"
+                      >lightbulb</span
+                    >
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <h3 class="text-slate-900 text-lg font-bold">
+                      Dining Lights
+                    </h3>
+                    <p class="text-slate-500 text-sm font-semibold">
+                      Dimmed • 65%
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div class="flex items-center justify-between mb-8 px-2">
+                <h2 class="text-slate-900 text-2xl font-bold tracking-tight">
+                  Environment Stats
+                </h2>
+                <button
+                  class="neumorphic-button px-4 py-2 rounded-lg text-sm font-bold text-primary"
+                >
+                  View History
+                </button>
+              </div>
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div class="neumorphic-card p-8 rounded-xl flex flex-col gap-1">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="size-10 neumorphic-inset rounded-lg flex items-center justify-center text-red-500"
+                      >
+                        <span class="material-symbols-outlined"
+                          >thermostat</span
+                        >
+                      </div>
+                      <p
+                        class="text-slate-600 font-bold uppercase tracking-wider text-xs"
+                      >
+                        Temperature
+                      </p>
+                    </div>
+                    <span
+                      class="text-emerald-500 text-xs font-bold flex items-center gap-1"
+                    >
+                      <span class="material-symbols-outlined text-sm"
+                        >trending_up</span
+                      >
+                      2.4%
+                    </span>
+                  </div>
+                  <div class="mb-4">
+                    <p
+                      class="text-slate-900 text-5xl font-bold tracking-tighter"
+                    >
+                      <span data-sensor="temperature">24.5</span><span class="text-slate-400 font-normal ml-1 text-2xl uppercase">°C</span>
+                    </p>
+                  </div>
+                  <div
+                    class="h-32 w-full neumorphic-inset rounded-lg p-2 overflow-hidden flex items-end"
+                  >
+                    <svg class="w-full h-full preserve-3d" viewbox="0 0 100 40">
+                      <path
+                        id="chart-temp-area"
+                        d="M0,35 Q10,32 20,34 T40,28 T60,25 T80,30 T100,15 L100,40 L0,40 Z"
+                        fill="rgba(255, 204, 204, 0.1)"
+                      ></path>
+                      <path
+                        id="chart-temp-line"
+                        d="M0,35 Q10,32 20,34 T40,28 T60,25 T80,30 T100,15"
+                        fill="none"
+                        stroke="#f6523b"
+                        stroke-width="2"
+                        vector-effect="non-scaling-stroke"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div
+                    class="flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1 mt-1"
+                  >
+                    <span>Morning</span>
+                    <span>Noon</span>
+                    <span>Now</span>
+                  </div>
+                </div>
+                <div class="neumorphic-card p-8 rounded-xl flex flex-col gap-1">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="size-10 neumorphic-inset rounded-lg flex items-center justify-center text-blue-500"
+                      >
+                        <span class="material-symbols-outlined"
+                          >humidity_percentage</span
+                        >
+                      </div>
+                      <p
+                        class="text-slate-600 font-bold uppercase tracking-wider text-xs"
+                      >
+                        Humidity
+                      </p>
+                    </div>
+                    <span
+                      class="text-red-500 text-xs font-bold flex items-center gap-1"
+                    >
+                      <span class="material-symbols-outlined text-sm"
+                        >trending_down</span
+                      >
+                      0.8%
+                    </span>
+                  </div>
+                  <div class="mb-4">
+                    <p
+                      class="text-slate-900 text-5xl font-bold tracking-tighter"
+                    >
+                      <span data-sensor="humidity">52.0</span><span class="text-slate-400 font-normal ml-1 text-2xl uppercase">%</span>
+                    </p>
+                  </div>
+                  <div
+                    class="h-32 w-full neumorphic-inset rounded-lg p-2 overflow-hidden flex items-end"
+                  >
+                    <svg class="w-full h-full" viewbox="0 0 100 40">
+                      <path
+                        id="chart-hum-area"
+                        d="M0,20 Q15,25 30,18 T60,22 T90,28 T100,35 L100,40 L0,40 Z"
+                        fill="rgba(59, 130, 246, 0.1)"
+                      ></path>
+                      <path
+                        id="chart-hum-line"
+                        d="M0,20 Q15,25 30,18 T60,22 T90,28 T100,35"
+                        fill="none"
+                        stroke="#3b82f6"
+                        stroke-width="2"
+                        vector-effect="non-scaling-stroke"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div
+                    class="flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1 mt-1"
+                  >
+                    <span>Morning</span>
+                    <span>Noon</span>
+                    <span>Now</span>
+                  </div>
+                </div>
+                <div class="neumorphic-card p-8 rounded-xl flex flex-col gap-1">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="size-10 neumorphic-inset rounded-lg flex items-center justify-center text-amber-500"
+                      >
+                        <span class="material-symbols-outlined"
+                          >brightness_6</span
+                        >
+                      </div>
+                      <p
+                        class="text-slate-600 font-bold uppercase tracking-wider text-xs"
+                      >
+                        Light intensity
+                      </p>
+                    </div>
+                    <span
+                      class="text-emerald-500 text-xs font-bold flex items-center gap-1"
+                    >
+                      <span class="material-symbols-outlined text-sm"
+                        >trending_up</span
+                      >
+                      12%
+                    </span>
+                  </div>
+                  <div class="mb-4">
+                    <p
+                      class="text-slate-900 text-5xl font-bold tracking-tighter"
+                    >
+                      <span data-sensor="lux">480</span><span
+                        class="text-slate-400 font-normal ml-1 text-2xl uppercase"
+                        >Lux</span
+                      >
+                    </p>
+                  </div>
+                  <div
+                    class="h-32 w-full neumorphic-inset rounded-lg p-2 overflow-hidden flex items-end"
+                  >
+                    <svg class="w-full h-full" viewbox="0 0 100 40">
+                      <path
+                        id="chart-lux-area"
+                        d="M0,38 Q20,35 40,25 T70,10 T100,5 L100,40 L0,40 Z"
+                        fill="rgba(245, 158, 11, 0.1)"
+                      ></path>
+                      <path
+                        id="chart-lux-line"
+                        d="M0,38 Q20,35 40,25 T70,10 T100,5"
+                        fill="none"
+                        stroke="#f59e0b"
+                        stroke-width="2"
+                        vector-effect="non-scaling-stroke"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div
+                    class="flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1 mt-1"
+                  >
+                    <span>Morning</span>
+                    <span>Noon</span>
+                    <span>Now</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="/static/js/index.js"></script>
+  </body>
+</html>
