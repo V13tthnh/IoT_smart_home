@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# SQLite database (dữ liệu runtime, không push lên repo)
+*.db
+*.sqlite3
+
+# Môi trường
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Các file loại trừ theo yêu cầu
+temp.py
+rule.md

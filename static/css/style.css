@@ -1,0 +1,92 @@
+body {
+  background-color: #f0f2f5 !important;
+}
+html.dark body {
+  background-color: #101622 !important;
+}
+.dark .neumorphic-card {
+  background: #1b2636;
+  box-shadow:
+    12px 12px 24px #0a0f17,
+    -12px -12px 24px #2c3645;
+}
+.dark .neumorphic-button {
+  background: #1b2636;
+  box-shadow:
+    6px 6px 12px #0a0f17,
+    -6px -6px 12px #2c3645;
+}
+.dark .neumorphic-inset {
+  background: #1b2636;
+  box-shadow:
+    inset 6px 6px 12px #0a0f17,
+    inset -6px -6px 12px #2c3645;
+}
+.dark .neumorphic-tab-active {
+  background: #1b2636;
+  box-shadow:
+    inset 4px 4px 8px #0a0f17,
+    inset -4px -4px 8px #2c3645;
+  color: #135bec;
+}
+.dark {
+  color-scheme: dark;
+}
+.dark text-slate-900 {
+  color: #e2e8f0;
+}
+.dark text-slate-600 {
+  color: #cbd5e1;
+}
+.dark text-slate-500 {
+  color: #94a3b8;
+}
+.dark text-slate-400 {
+  color: #78909c;
+}
+.dark .text-slate-900 {
+  color: #e2e8f0;
+}
+.dark .text-slate-600 {
+  color: #cbd5e1;
+}
+.dark .text-slate-500 {
+  color: #94a3b8;
+}
+.dark .text-slate-400 {
+  color: #78909c;
+}
+.dark .bg-slate-300 {
+  background-color: #334155;
+}
+.dark .bg-slate-200 {
+  background-color: #475569;
+}
+.dark .border-slate-200 {
+  border-color: #334155;
+}
+.neumorphic-card {
+  background: #f0f2f5;
+  box-shadow:
+    12px 12px 24px #d1d9e6,
+    -12px -12px 24px #ffffff;
+}
+.neumorphic-button {
+  background: #f0f2f5;
+  box-shadow:
+    6px 6px 12px #d1d9e6,
+    -6px -6px 12px #ffffff;
+  transition: all 0.2s ease;
+}
+.neumorphic-button:active {
+  box-shadow:
+    inset 4px 4px 8px #d1d9e6,
+    inset -4px -4px 8px #ffffff;
+  transform: scale(0.98);
+}
+.neumorphic-inset {
+  background: #f0f2f5;
+  box-shadow:
+    inset 6px 6px 12px #d1d9e6,
+    inset -6px -6px 12px #ffffff;
+}
